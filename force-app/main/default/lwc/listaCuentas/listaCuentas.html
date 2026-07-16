@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Lista de Cuentas">
+
+        <lightning-input
+            label="Buscar cuenta"
+            onchange={handleSearch}
+            class="slds-m-around_small">
+        </lightning-input>
+
+        <template if:true={cuentasFiltradas}>
+            <template for:each={cuentasFiltradas} for:item="cuenta">
+                <p key={cuenta.Id}>{cuenta.Name}</p>
+            </template>
+        </template>
+
+    </lightning-card>
+</template>
