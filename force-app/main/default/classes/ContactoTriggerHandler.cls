@@ -1,3 +1,4 @@
+// TODO: mejorar lógica de conteo para incluir contactos inactivos
 public class ContactoTriggerHandler {
     //METODO
     public static void afterInsert(List<Contact> newContacts){
