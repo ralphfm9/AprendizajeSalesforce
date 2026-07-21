@@ -1,3 +1,4 @@
+// Version B del comentario
 public with sharing class HolaMundo {
 
     public static void variables() {
