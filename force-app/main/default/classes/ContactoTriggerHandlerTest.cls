@@ -54,4 +54,23 @@ private class ContactoTriggerHandlerTest {
         
 }      
 
+@isTest
+    static void testBulkInsert200Contactos( ){
+        //ARRANGE
+        Account cuenta = [SELECT Id FROM Account WHERE Name = 'Cuenta de prueba' LIMIT 1];
+        List<Contact> contactos = new List<Contact>();
+        for (Integer i = 0; i < 200; i++) {
+            contactos.add(new Contact(FirstName = 'Test', LastName = 'Contacto' + i, AccountId = cuenta.Id));
+        }
+
+        //ACT
+        Test.startTest();
+        insert contactos;
+        Test.stopTest();
+
+        //ASSERT
+        Account cuentaActualizada = [SELECT Id, Total_Contacts__c FROM Account WHERE Id = :cuenta.Id LIMIT 1];
+        System.assertEquals(200, cuentaActualizada.Total_Contacts__c, 'El campo debe ser 200');
+    }
+
 }
