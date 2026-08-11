@@ -1,8 +1,17 @@
 <apex:page controller="ListaCuentasController">
-    <apex:pageBlock title="Lista de Cuentas">
-        <apex:pageBlockTable value="{!cuentas}" var="cuenta">
-            <apex:column value="{!cuenta.Name}"/>
-            <apex:column value="{!cuenta.Total_Contacts__c}"/>
-        </apex:pageBlockTable>
-    </apex:pageBlock>
+    <apex:form>
+        <apex:pageBlock title="Lista de Cuentas">
+
+            <apex:pageBlockSection columns="1">
+                <apex:inputText value="{!nombreBusqueda}" label="Buscar por nombre"/>
+                <apex:commandButton value="Buscar" action="{!buscar}" reRender="tablaCuentas"/>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockTable value="{!cuentas}" var="cuenta" id="tablaCuentas">
+                <apex:column value="{!cuenta.Name}"/>
+                <apex:column value="{!cuenta.Total_Contacts__c}"/>
+            </apex:pageBlockTable>
+
+        </apex:pageBlock>
+    </apex:form>
 </apex:page>
