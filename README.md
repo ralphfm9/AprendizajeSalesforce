@@ -12,6 +12,13 @@ Proyecto Salesforce (SFDX) con ejercicios reales de desarrollo: triggers bulkifi
 
 ![Tests pasando en la org](docs/img/tests-pasando.png)
 
+### Trigger de seguimiento post-venta
+- `OpportunityTrigger` + `OpportunityTriggerHandler`
+- Al detectar que una Opportunity cambia a `Closed Won` (comparando `Trigger.new` contra `Trigger.oldMap`), crea automáticamente una `Task` de seguimiento post-venta asignada al owner, con fecha 7 días después
+- Bulkificado: filtra las oportunidades relevantes primero, crea todas las tareas en un solo `insert`
+
+![Test del trigger de cierre de oportunidad](docs/img/opportunity-closed-won-test.png)
+
 ### Procesos asíncronos
 - `RecalcularConteoContactosBatch` — Batch Apex para recorrer y corregir el conteo en toda la org
 - `NotificarCambioQueueable` — Queueable Apex de ejemplo para procesamiento en segundo plano
