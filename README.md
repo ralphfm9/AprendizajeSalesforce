@@ -1,18 +1,61 @@
-# Salesforce DX Project: Next Steps
+# Aprendizaje Salesforce — Proyecto de Práctica
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Proyecto Salesforce (SFDX) con ejercicios reales de desarrollo: triggers bulkificados, procesos asíncronos, integraciones REST/SOAP, Flow, Visualforce y modelado de datos avanzado.
 
-## How Do You Plan to Deploy Your Changes?
+## 🚀 Features
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+### Trigger de conteo de contactos
+- `ContactoTrigger` + `ContactoTriggerHandler`
+- Mantiene actualizado el campo `Total_Contacts__c` en `Account` ante `insert`, `update` (incluye cambio de cuenta) y `delete`
+- Bulkificado: sin SOQL/DML dentro de loops
+- 96%+ de cobertura, incluye test de volumen (200 registros) para validar Governor Limits
 
-## Configure Your Salesforce DX Project
+### Procesos asíncronos
+- `RecalcularConteoContactosBatch` — Batch Apex para recorrer y corregir el conteo en toda la org
+- `NotificarCambioQueueable` — Queueable Apex de ejemplo para procesamiento en segundo plano
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+### Integraciones
+- `IntegracionService` + `MockHttpService` — integración REST con test mockeado
+- Integración SOAP contra un servicio externo (WSDL) vía clases generadas por Salesforce
 
-## Read All About It
+### Visualforce
+- `ListaCuentas` + `ListaCuentasController` — listado de cuentas con buscador AJAX (`reRender`, sin recargar página)
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+### Lightning Web Components
+- `listaCuentas` — componente LWC básico consumiendo datos de Salesforce
+
+### Modelado de datos
+- `Factura__c` — relación Master-Detail con `Account`, con Roll-Up Summary
+- `Inscripcion__c` — Junction Object (Master-Detail x2) resolviendo relación muchos-a-muchos entre `Contact` y `Curso__c`
+
+## 🛠️ Stack técnico
+- Apex (clases, triggers, batch, queueable, test classes)
+- Lightning Web Components
+- Visualforce
+- SOQL / SOSL
+- REST / SOAP callouts
+- Salesforce Flow
+- Salesforce CLI + Git
+
+## 📁 Estructura
+```
+force-app/main/default/
+├── classes/       # Apex classes, handlers, batch, queueable, tests
+├── triggers/       # ContactoTrigger, OpportunityTrigger
+├── lwc/             # Componentes Lightning Web Components
+├── pages/          # Visualforce
+├── objects/        # Objetos custom (Factura__c, Curso__c, Inscripcion__c)
+```
+
+## ⚙️ Cómo desplegar
+```bash
+sf project deploy start --source-dir force-app
+```
+
+Correr los tests:
+```bash
+sf project deploy start --source-dir force-app --test-level RunLocalTests
+```
+
+## 📌 Sobre este proyecto
+Repositorio de práctica para reforzar desarrollo Salesforce end-to-end: desde triggers bulkificados hasta integraciones externas y modelado de datos, con control de versiones vía Git desde el primer commit.
