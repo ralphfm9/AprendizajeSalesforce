@@ -1,4 +1,4 @@
-# Aprendizaje Salesforce — Proyecto de Práctica
+# salesforce-dev-portfolio — Proyecto de Práctica
 
 Proyecto Salesforce (SFDX) con ejercicios reales de desarrollo: triggers bulkificados, procesos asíncronos, integraciones REST/SOAP, Flow, Visualforce y modelado de datos avanzado.
 
