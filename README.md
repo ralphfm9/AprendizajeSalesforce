@@ -41,8 +41,7 @@ Proyecto Salesforce (SFDX) con ejercicios reales de desarrollo: triggers bulkifi
 
 - `listaCuentas` — componente LWC consumiendo datos de Apex con `@wire`, incluyendo manejo de `{ data, error }`
 
-![Componente LWC listaCuentas mostrando datos vía @wire](<img width="1332" height="544" alt="lwc-listacuentas" src="https://github.com/user-attachments/assets/c3085a92-188a-4982-aff8-6002c2982f26" />
-)
+![Componente LWC listaCuentas mostrando datos vía @wire](docs/img/lwc-listacuentas.png)
 
 ### Modelado de datos
 - `Factura__c` — relación Master-Detail con `Account`, con Roll-Up Summary
