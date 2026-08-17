@@ -1,5 +1,7 @@
 # salesforce-dev-portfolio — Proyecto de Práctica
 
+**Rafael Franco Moreno** · [LinkedIn](https://www.linkedin.com/in/rafael-franco-moreno/) · Salesforce Developer & Administrator
+
 Proyecto Salesforce (SFDX) con ejercicios reales de desarrollo: triggers bulkificados, procesos asíncronos, integraciones REST/SOAP, Flow, Visualforce y modelado de datos avanzado.
 
 ## 🚀 Features
@@ -36,7 +38,10 @@ Proyecto Salesforce (SFDX) con ejercicios reales de desarrollo: triggers bulkifi
 ![Buscador de cuentas en Visualforce](docs/img/visualforce-buscador.png)
 
 ### Lightning Web Components
+
 - `listaCuentas` — componente LWC consumiendo datos de Apex con `@wire`, incluyendo manejo de `{ data, error }`
+
+![Componente LWC listaCuentas mostrando datos vía @wire](https://github.com/ralphfm9/salesforce-dev-portfolio/raw/master/docs/img/lwc-listacuentas.png)
 
 ### Modelado de datos
 - `Factura__c` — relación Master-Detail con `Account`, con Roll-Up Summary
